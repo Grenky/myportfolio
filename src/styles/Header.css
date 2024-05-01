@@ -1,0 +1,24 @@
+.header-wrapper {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.App-logo {
+    width: 200px;
+    height: 200px;
+}
+
+.nav-wrapper {
+    display: flex;
+    color: white;
+    margin-right: 50px;
+}
+
+.nav-wrapper li {
+    margin-left: 45px;
+    list-style-type: none;
+    font-weight: bold;
+    font-size: 20px;
+}

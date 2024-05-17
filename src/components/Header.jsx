@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import '../styles/Header.scss';
 
 
@@ -7,10 +8,10 @@ export default function Header() {
             <img src='/img/logo-color.svg' className='App-logo' alt='logo'></img>
             <nav className='nav'>
                 <ul className='nav-wrapper'>
-                    <li>Home</li>
-                    <li>Resume</li>
-                    <li>Projects</li>
-                    <li>Contact</li>
+                    <Link to="/FrontPage" className='frontpage'>FrontPage</Link>
+                    <Link to="/Resume" className='resume'>Resume</Link>
+                    <Link to="/Projects" className='projects'>Projects</Link>
+                    <Link to="/Contact" className='contact'>Contact</Link>
                 </ul>
             </nav>
         </header>

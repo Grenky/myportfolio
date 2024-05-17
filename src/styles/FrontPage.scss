@@ -29,7 +29,7 @@
         font-size: 80px;
         margin: 10px;
     }
-    button {
+    .front-btn {
         background-color: #0A192F;
         width: 180px;
         height: 50px;
@@ -37,8 +37,9 @@
         color: #44AE9D;
         font-weight: bolder;
         margin: 10px;
+        text-decoration: none;
     }
-    button:hover {
+    .front-btn:hover {
         cursor: pointer;
         color: black;
         border: 1px solid #8892B0;

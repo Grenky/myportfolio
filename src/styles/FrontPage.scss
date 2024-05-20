@@ -38,6 +38,9 @@
         font-weight: bolder;
         margin: 10px;
         text-decoration: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
     .front-btn:hover {
         cursor: pointer;

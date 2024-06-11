@@ -11,7 +11,7 @@ export default function FrontPage() {
             <div className="frontpage-content">
                 <p>Hi, my name is</p>
                 <h1>Dmitry Zaiets</h1>
-                <h2>i am frontend developer</h2>
+                <h2>I am frontend developer</h2>
                 <Link to="/Projects" className="front-btn">Check my projects</Link>
             </div>
         </div>

@@ -1,0 +1,11 @@
+.notfound-wrapper {
+  width: 100vw;
+  height: 100vh;
+}
+.notfound-wrapper div {
+  display: flex;
+  justify-content: center;
+}
+.notfound-wrapper div h1 {
+  color: white;
+}/*# sourceMappingURL=NotFound.css.map */

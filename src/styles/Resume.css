@@ -1,0 +1,56 @@
+.resume-wrapper {
+  width: 100% s;
+  padding-bottom: 100px;
+}
+.resume-wrapper h2 {
+  color: #42A895;
+}
+.resume-wrapper .resume-content {
+  width: 100%;
+}
+.resume-wrapper .resume-content .resume-container {
+  width: 100%;
+  padding: 0px 150px 0px 150px;
+  display: flex;
+  color: white;
+  flex-flow: column;
+}
+.resume-wrapper .resume-content .resume-container .resume-left {
+  display: flex;
+  justify-content: space-around;
+}
+.resume-wrapper .resume-content .resume-container .resume-left div {
+  font-size: 17px;
+}
+.resume-wrapper .resume-content .resume-container .resume-left .h2 {
+  color: #42A895;
+}
+.resume-wrapper .resume-content .resume-container .resume-left .myImg {
+  width: 400px;
+  height: 580px;
+  border-radius: 15px;
+}
+.resume-wrapper .resume-content .resume-container .resume-left .info-box a {
+  text-decoration: none;
+  color: white;
+}
+.resume-wrapper .resume-content .resume-container .resume-left .links-box {
+  display: flex;
+  flex-flow: column;
+}
+.resume-wrapper .resume-content .resume-container .resume-left .links-box a {
+  text-decoration: none;
+  color: white;
+}
+.resume-wrapper .resume-content .resume-container .resume-left .links-box .linkedin {
+  margin-top: 10px;
+}
+.resume-wrapper .resume-content .resume-container .resume-right {
+  padding: 0px 40px 0px 40px;
+  font-size: 20px;
+}
+.resume-wrapper .resume-content .resume-container .resume-right div span {
+  color: #42A895;
+  font-weight: bold;
+  font-size: 25px;
+}/*# sourceMappingURL=Resume.css.map */

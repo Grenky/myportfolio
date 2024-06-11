@@ -1,0 +1,37 @@
+.header-wrapper {
+  height: 200px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 100px;
+}
+
+.App-logo {
+  width: 200px;
+  height: 200px;
+  cursor: pointer;
+}
+
+.nav-wrapper {
+  display: flex;
+  margin-right: 50px;
+  list-style: none;
+}
+
+.nav-wrapper .frontpage, .nav-wrapper .resume, .nav-wrapper .projects, .nav-wrapper .contact {
+  margin-left: 45px;
+  list-style-type: none;
+  font-weight: bold;
+  font-size: 20px;
+  text-decoration: none;
+  color: white;
+  border: 1px solid white;
+  padding: 10px;
+  border-radius: 15px;
+}
+.nav-wrapper .frontpage:hover, .nav-wrapper .resume:hover, .nav-wrapper .projects:hover, .nav-wrapper .contact:hover {
+  transition: 0.2s;
+  cursor: pointer;
+  color: #8892B0;
+}/*# sourceMappingURL=Header.css.map */

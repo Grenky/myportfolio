@@ -6,14 +6,14 @@ export default function Header() {
     return (
         <header className="header-wrapper">
             <Link to="/">
-                <img src='/img/logo-color.svg' className='App-logo' alt='logo'></img>
+                <img src="../logo-color.svg" className='App-logo' alt='logo'/>
             </Link>
             <nav className='nav'>
                 <ul className='nav-wrapper'>
-                    <Link to="/" className='frontpage'>FrontPage</Link>
-                    <Link to="/Resume" className='resume'>Resume</Link>
-                    <Link to="/Projects" className='projects'>Projects</Link>
-                    <Link to="/Contact" className='contact'>Contact</Link>
+                <li><Link to="/" className='frontpage'>FrontPage</Link></li>
+                    <li><Link to="/Resume" className='resume'>Resume</Link></li>
+                    <li><Link to="/Projects" className='projects'>Projects</Link></li>
+                    <li><Link to="/Contact" className='contact'>Contact</Link></li>
                 </ul>
             </nav>
         </header>

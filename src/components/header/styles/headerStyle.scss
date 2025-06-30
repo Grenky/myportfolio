@@ -1,0 +1,16 @@
+.header-wrapper {
+    max-width: 1200px;
+    height: 100px;
+    background-color: #111111;
+    margin: 0;
+
+    .logo-wrapper {
+        color: white;
+        .logo-icon {
+            color: #8FE8C8;
+        }
+        .logo-text {
+            color: white;
+        }
+    }
+}

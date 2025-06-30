@@ -1,0 +1,15 @@
+.header-wrapper {
+  max-width: 1200px;
+  height: 100px;
+  background-color: #111111;
+  margin: 0;
+}
+.header-wrapper .logo-wrapper {
+  color: white;
+}
+.header-wrapper .logo-wrapper .logo-icon {
+  color: #8FE8C8;
+}
+.header-wrapper .logo-wrapper .logo-text {
+  color: white;
+}/*# sourceMappingURL=headerStyle.css.map */

@@ -1,33 +1,99 @@
+            @keyframes blink {
+            0%, 50% {
+                opacity: 1;
+            }
+            51%, 100% {
+                opacity: 0;
+            }
+            
+        }
+
+
+
 .wrapper {
     color: white;
     display: flex;
     width: 100%;
     height: 100%;
-    
+    display: flex;
+    flex-flow: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+    margin: 40px 30px;
+    gap: 60px;
+    max-width: calc(100% - 60px - 80px);
+    margin-left: auto;
+    margin-right: auto;
+
+      @media (max-width: 768px) {
+        flex-direction: column-reverse;
+        gap: 30px;
+      }
+
     .img-box {
-        width: 500px;
-        height: 500px;
-        overflow: hidden;
-        margin: 50px;
-        position: relative;
+        flex-shrink: 0;
+        max-width: 500px;
+        width: 100%;  
         display: flex;
         justify-content: center;
+        align-items: center;
+        flex: 1;
+        
 
         .myImg {
-            max-width: 100%;
-            height: auto;
+            width: 100%;
+            height: 100%;
             object-fit: cover;
-            display: block;
-            border-radius: 12px;
-            
+            border-radius: 12px;   
         }
     }
-    .img-box, .text {
-        flex: 1;
-    }
     .text {
+        min-width: 300px;
         display: flex;
         flex-flow: column;
         justify-content: center;
+        padding: 1rem;
+        flex: 1;
+
+        .first-text {
+            font-size: 20px;
+            font-family: 'Poppins', sans-serif;
+
+            .tag {
+                color: #EA8F8D;
+                font-size: 20px;
+                font-family: 'JetBrains Mono', monospace;
+            }
+        }
+        .title {
+            font-size: 38px;
+            font-family: 'Poppins', sans-serif;
+
+
+            .title-tag {
+                color: #027B52;
+            }
+        }
+        .last-text {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 20px;
+            line-height: 30px;
+            position: relative;
+            white-space: pre-wrap;
+            min-height: 12ch;
+
+            .tag{
+                color: #EA8F8D;
+            }
+              .cursor {
+                display: inline-block;
+                width: 5px;
+                height: 1em;
+                background-color: white;
+                margin-left: 2px;
+                animation: blink 1s steps(1) infinite;
+                }
+            }
     }
 }

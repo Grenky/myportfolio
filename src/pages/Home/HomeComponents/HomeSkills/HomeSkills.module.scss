@@ -1,0 +1,21 @@
+.skills-wrapper {
+    background-color: #111111;
+    padding: 50px;
+    color: white;
+
+    .content {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .title-box {
+
+            .title {
+                font-family: "Poppins", sans-serif;
+                font-size: 38px;
+                color: #D6DFF2;
+                font-weight: 600;
+            }
+        }
+    }
+}

@@ -75,7 +75,7 @@ export default function HomeSkills() {
                 <div className={SkillsStyle['skill-box']}>
                     {skills.map((skill, index) => (
                         <figure key={index} className={SkillsStyle['skill-item']}>
-                            <img src={skill.src} alt={`${skill.alt} logo`} />
+                            <img src={skill.src} alt={`${skill.alt} logo`} loading="lazy"/>
                         </figure>
                     ))}
                 </div>

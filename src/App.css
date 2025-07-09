@@ -4,7 +4,11 @@ html, body {
   box-sizing: border-box;
 }
 .App {
-  background-color: #161616;
+  background: linear-gradient(to right, #161616, #222121);
+
+
+
+
   min-height: 100vh;
   display: flex;
   flex-direction: column;

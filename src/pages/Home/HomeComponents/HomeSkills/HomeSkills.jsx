@@ -16,16 +16,56 @@ import trelloImg from '../../../../assets/images/Trello_icon-icons.webp';
 import jiraImg from '../../../../assets/images/jira.jpeg';
 import figmaImg from '../../../../assets/images/Screenshot 2025-07-07 153530.png';
 
+import Modal from './Modal/Modal';
+
 
 const skills = [
-  { src: jsImg, alt: 'JavaScript' },
-  { src: htmlImg, alt: 'HTML' },
-  { src: cssImg, alt: 'CSS' },
-  { src: reactImg, alt: 'React.js' },
-  { src: reduxImg, alt: 'Redux' },
-  { src: nodeImg, alt: 'Node.js' },
-  { src: sqlImg, alt: 'SQL' },
-  { src: cypressImg, alt: 'Cypress' },
+  { src: jsImg,
+    alt: 'JavaScript',
+    description: `JavaScript is a programming language used to create interactive elements on web pages.
+    Main purpose: Adds dynamic behavior, user interaction, API work, animations, etc.` },
+  { src: htmlImg,
+    alt: 'HTML',
+    description: `HTML (HyperText Markup Language) is a markup language used to create the structure of web pages.
+    Main purpose: Defines the structure and content of a web page.
+    Describes elements: headings, paragraphs, lists, images, links, tables, etc.`
+    },
+  { src: cssImg,
+    alt: 'CSS',
+    description: `CSS (Cascading Style Sheets) is a style language used to style HTML elements.
+    Main Purpose:
+    Defines colors, fonts, padding, positioning, animations, and page responsiveness.`
+    },
+  { src: reactImg,
+    alt: 'React.js',
+    description: `React is a JavaScript library for creating user interfaces.
+    Main purpose:
+    Creating components, efficient rendering, and building dynamic single-page applications (SPAs).`
+    },
+  { src: reduxImg,
+    alt: 'Redux',
+    description: `Redux is a library for managing the state of JavaScript applications.
+    Main purpose:
+    Centralized data storage, predictable state updates, and easy data transfer between components.`
+    },
+  { src: nodeImg,
+    alt: 'Node.js',
+    description: `Node.js is a server-side JavaScript runtime built on the V8 engine.
+    Main purpose:
+    Backend application development, query processing, file, database, and API work.`
+    },
+  { src: sqlImg,
+    alt: 'SQL',
+    description: `SQL (Structured Query Language) is a query language for working with relational databases.
+    Main purpose:
+    Creating, reading, updating and deleting data in databases (CRUD operations).`
+    },
+  { src: cypressImg,
+    alt: 'Cypress',
+    description: `Cypress is a tool for end-to-end testing of web applications.
+    Main purpose:
+    Automatic testing of interfaces, checking user interaction with the UI in a real browser.`
+    },
   { src: mochajsImg, alt: 'Mocha.js' },
   { src: redmineImg, alt: 'Redmine' },
   { src: asanaImg, alt: 'Asana' },
@@ -38,6 +78,7 @@ export default function HomeSkills() {
 
     const sectionRef = useRef(null);
     const [isVisible, setIsVisible] = useState(false);
+    const [selectedSkill, setSelectedSkill] = useState(null);
 
     useEffect(() =>{
         const element = sectionRef.current;
@@ -62,6 +103,16 @@ export default function HomeSkills() {
             if(element) observer.unobserve(element);
         };
     }, []);
+
+
+
+    const handleSkillClick = (skill) => {
+        setSelectedSkill(skill);
+    };
+
+    const closeModal = () => {
+        setSelectedSkill(null);
+    }
     
 
 
@@ -74,10 +125,15 @@ export default function HomeSkills() {
                 </div>
                 <div className={SkillsStyle['skill-box']}>
                     {skills.map((skill, index) => (
-                        <figure key={index} className={SkillsStyle['skill-item']}>
+                        <figure 
+                        key={index} 
+                        className={SkillsStyle['skill-item']}
+                        onClick={() => handleSkillClick(skill)}
+                        >
                             <img src={skill.src} alt={`${skill.alt} logo`} loading="lazy"/>
                         </figure>
                     ))}
+                    <Modal skill={selectedSkill} onClose={closeModal} />
                 </div>
             </div>
         </section>

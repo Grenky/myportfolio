@@ -23,11 +23,13 @@ const skills = [
   { src: jsImg,
     alt: 'JavaScript',
     description: `JavaScript is a programming language used to create interactive elements on web pages.
-    Main purpose: Adds dynamic behavior, user interaction, API work, animations, etc.` },
+    Main purpose: 
+    Adds dynamic behavior, user interaction, API work, animations, etc.` },
   { src: htmlImg,
     alt: 'HTML',
     description: `HTML (HyperText Markup Language) is a markup language used to create the structure of web pages.
-    Main purpose: Defines the structure and content of a web page.
+    Main purpose: 
+    Defines the structure and content of a web page.
     Describes elements: headings, paragraphs, lists, images, links, tables, etc.`
     },
   { src: cssImg,
@@ -66,12 +68,41 @@ const skills = [
     Main purpose:
     Automatic testing of interfaces, checking user interaction with the UI in a real browser.`
     },
-  { src: mochajsImg, alt: 'Mocha.js' },
-  { src: redmineImg, alt: 'Redmine' },
-  { src: asanaImg, alt: 'Asana' },
-  { src: trelloImg, alt: 'Trello' },
-  { src: jiraImg, alt: 'Jira' },
-  { src: figmaImg, alt: 'Figma' },
+  { src: mochajsImg,
+    alt: 'Mocha.js',
+    description: `Mocha.js is a framework for testing JavaScript code.
+    Main purpose:
+    Writing unit and integration tests, organizing test structures, and running asynchronous code.`
+    },
+  { src: redmineImg,
+    alt: 'Redmine',
+    description: `Redmine is an open source project and task management system.
+    Main purpose:
+    Task scheduling, bug tracking, deadline control, and team collaboration.`
+    },
+  { src: asanaImg,
+    alt: 'Asana',
+    description: `Asana is an online project management and team collaboration platform.
+    Main purpose:
+    Planning tasks, tracking progress, organizing workflow in teams.`
+    },
+  { src: trelloImg,
+    alt: 'Trello',
+    description: `Trello is an online tool for managing tasks and projects.
+    Built on the principle of a Kanban board: projects are divided into boards, where there are columns (for example: “To Do”, “In Progress”, “Done”) and cards (tasks)`
+    },
+  { src: jiraImg,
+    alt: 'Jira',
+    description: `Jira is a powerful project management system popular among IT teams, especially for software development.
+    Developed by Atlassian.
+    Suitable for working with Scrum, Kanban, Agile methodologies.`
+  },
+  { src: figmaImg,
+    alt: 'Figma',
+    description: `Figma is an online tool for interface design and prototyping.
+    Works directly in the browser - no installation required.
+    Suitable for UI/UX design, mobile and web applications.`
+  },
 ];
 
 export default function HomeSkills() {

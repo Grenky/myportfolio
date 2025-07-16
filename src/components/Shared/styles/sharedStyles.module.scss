@@ -86,3 +86,23 @@
             }
         }
     }
+
+     @media (max-width: 768px) {
+        .nav-container {
+            display: none;
+            flex-direction: column;
+            gap: 20px;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background-color: #111;
+            padding: 20px;
+            z-index: 999;
+            border-bottom-left-radius: 12px;
+            border-bottom-right-radius: 12px;
+            }
+            .nav-container .active {
+                display: flex;
+                }
+            }

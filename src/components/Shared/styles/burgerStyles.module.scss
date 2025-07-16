@@ -1,0 +1,52 @@
+.burger-wrapper {
+    display: none;
+    position: absolute;
+
+    @media (max-width: 768px) {
+        display: block;
+        width: 100%;
+    }
+
+    .burger-button {
+        background: none;
+        border: none;
+        color:  white;
+        font-size: 28px;
+        cursor: pointer;
+        padding: 10px 0;
+
+    }
+    .nav-container {
+  display: none;
+  flex-direction: column;
+  gap: 20px;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: #111;
+  padding: 20px;
+  z-index: 999;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+
+  li {
+    list-style: none;
+
+    a {
+      text-decoration: none;
+      color: white;
+      font-size: 18px;
+
+      &:hover {
+        color: var(--accent-color);
+      }
+    }
+  }
+}
+
+.active {
+  display: flex;
+}
+
+}

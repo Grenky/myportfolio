@@ -2,6 +2,7 @@ import styles from './styles/headerStyle.module.scss';
 import LogoBlock from '../Shared/LogoBlock';
 import NavBlock from '../Shared/NavBlock';
 import SocialBlock from '../Shared/SocialBlock';
+import BurgerMenu from '../Shared/BurgerMenu';
 
 
 export default function Header() {
@@ -11,6 +12,7 @@ export default function Header() {
             <LogoBlock />
             <NavBlock />
             <SocialBlock />
+            <BurgerMenu />
         </div>
     )
 }

@@ -1,10 +1,10 @@
-import shaderStyles from './styles/sharedStyles.module.scss';
+import sharedStyles from './styles/sharedStyles.module.scss';
 
 
 export default function NavBlock() {
     return(
-        <nav className={shaderStyles['header-nav']}>
-            <ul className={shaderStyles['nav-container']}>
+        <nav className={sharedStyles['header-nav']}>
+            <ul className={sharedStyles['nav-container']}>
                 <li><a href='/'>About Me</a></li>
                 <li><a href='/'>Resume</a></li>
                 <li><a href='/'>Contacts</a></li>

@@ -1,8 +1,10 @@
-
+import ResumeContent from './ResumeComponents/ResumeContent';
 
 
 export default function Resume() {
     return(
-        <div>Resume test</div>
+        <div className="resume-wrapper">
+            <ResumeContent />
+        </div>
     )
 }

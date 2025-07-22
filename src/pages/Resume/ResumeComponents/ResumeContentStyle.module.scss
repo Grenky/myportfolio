@@ -18,15 +18,82 @@
     .resume-content {
         width: 100%;
         display: flex;
-        justify-content: space-between;
+        flex-flow: column;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 20px;
+        line-height: 30px;
+        white-space: pre-wrap;
+        flex-wrap: wrap;
 
-        .left-info {
-            
-            width: 50%;
+        h3 {
+            font-family: "Poppins", sans-serif;
+            color: #AAAAAA;
         }
-        .right-info {
-            
-            width: 50%;
+
+        .first-info {
+          padding: 0px 145px; 
+
+          .tag {
+            color: #EA8F8D;
+          }
+          .tag2 {
+            color: #027B52;
+          }
+          p{
+            border-bottom: 1px solid #AAAAAA;
+          }
+          section {
+            margin-bottom: 50px;
+          }
+
+          @media (max-width: 768px) {
+            padding: 0 20px;
+          }
         }
+        .second-info {
+            display: flex;
+            justify-content: space-around;
+            
+
+            section {
+              display: flex;
+              flex-flow: column;
+              border-radius: 12px;
+              border: 1px solid #AAAAAA;
+              padding: 30px;
+
+              a {
+                text-decoration: none;
+                color: white;
+                margin-bottom: 15px;
+                &:hover {
+                  color: #aaa;
+                }
+              }
+              
+              p {
+
+                a {
+                  text-decoration: none;
+                  color: white;
+
+                  &:hover {
+                    color: #aaa;
+                  }
+                }
+              }
+              @media (max-width:768px) {
+                padding: 20px;    
+              }
+            }
+          @media (max-width:768px) {
+            flex-direction: column;
+            gap: 20px;
+          }
+        }
+      @media (max-width: 768px) {
+        font-size: 16px;
+        line-height: 26px;
+      }
     }
 }

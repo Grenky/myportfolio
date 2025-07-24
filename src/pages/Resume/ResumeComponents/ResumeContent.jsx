@@ -4,6 +4,7 @@ import ResumeContentStyle from './ResumeContentStyle.module.scss';
 export default function Resume() {
     return(
         <div className={ResumeContentStyle['resume-content-wrapper']}>
+            <div className={ResumeContentStyle['corner-curve']}></div>
             <div className={ResumeContentStyle['resume-title_box']}>
                 <h1 className={ResumeContentStyle.title}>Resume</h1>
             </div>

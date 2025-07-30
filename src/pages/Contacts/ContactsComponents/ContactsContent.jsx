@@ -1,19 +1,27 @@
 import ContactsContentStyle from './ContactsContentStyle.module.scss'
 import useContactForm from '../../../hooks/useContactForm';
+import { useState } from 'react';
 
 
 export default function ContactsContent() {
+
+    const [showSuccessPopup, setShowSuccessPopup] = useState(false);
+
     const {
         values,
         errors,
         handleChange,
         handleSubmit,
+        resetForm,
     } = useContactForm();
 
     const onFormSubmit = (FormData) => {
         console.log('Form submitted', FormData);
+        setShowSuccessPopup(true);
+        resetForm();
+    };
 
-    }
+
 
     
     return(
@@ -32,33 +40,50 @@ export default function ContactsContent() {
                             id="name"
                             name="name"
                             type="text"
-                            placeholder="Your Name"
+                            placeholder={errors.name || "Your Name"}
                             value={values.name}
                             onChange={handleChange}
+                            className={errors.name ? ContactsContentStyle['input-error'] : ''}
+                            aria-invalid={!!errors.name}
+                            aria-describedby="error-name"
                         />
-                        {errors.name && <span className={ContactsContentStyle.error}>{errors.name}</span>}
+                        
                         <label htmlFor="subject" className={ContactsContentStyle['visually-hidden']}>Subject</label>     
                         <input 
-                            id="name"  
+                            id="subject"  
                             name="subject"
                             type="text"
-                            placeholder="The reason for your message"
+                            placeholder={errors.subject || "The reason for your message"}
                             value={values.subject}
                             onChange={handleChange}
+                            className={errors.subject ? ContactsContentStyle['input-error'] : ''}
+                            aria-invalid={!!errors.subject}
+                            aria-describedby="error-subject"
                         />
-                        {errors.subject && <span className={ContactsContentStyle.error}>{errors.subject}</span>}
+                        
                         <label htmlFor="message" className={ContactsContentStyle['visually-hidden']}>Message</label>
-                        <textarea   
+                        <textarea 
+                            id="message"  
                             name="message"
-                            placeholder="Your message"
+                            placeholder={errors.message || "Your message"}
                             rows="5"
                             value={values.message}
                             onChange={handleChange}
-                        />
-                        {errors.message && <span className={ContactsContentStyle.error}>{errors.message}</span>}
+                            className={errors.message ? ContactsContentStyle['input-error'] : ''}
+                            aria-invalid={!!errors.message}
+                            aria-describedby="error-message"
+                        /> 
                         <button type="submit">Send</button>
                     </form>
-                </div>   
+                </div>
+                {showSuccessPopup && (
+                    <div className={ContactsContentStyle['popup-overlay']}>
+                        <div className={ContactsContentStyle.popup}>
+                            <p>Your message has been sent successfully!</p>
+                            <button onClick={() => setShowSuccessPopup(false)}>Close</button>
+                        </div>
+                    </div>
+                )}  
         </section >
     )
 }

@@ -1,8 +1,8 @@
 
-import { useState } from "react"
+import { useState, useRef, useEffect } from "react"
 
 export default function useContactForm() {
-    const [values, setValue] = useState({
+    const [values, setValues] = useState({
         name: '',
         subject: '',
         message: '',
@@ -11,11 +11,22 @@ export default function useContactForm() {
     const [errors, setErrors] = useState({});
     const [isSubmitted, setIsSubmitted] = useState(false);
 
+
+    const inputRefs = {
+        name: useRef(null),
+        subject: useRef(null),
+        message: useRef(null),
+    };
+
+
+    const nameRegex = /^[a-zA-Zа-щА-ЩґҐєЄіІїЇ\s'-]+$/;
+    const subjectRegex = /^[a-zA-Zа-щА-ЩґҐєЄіІїЇ0-9\s'’":\-.,!?()&]+$/;
+    const russianLettersRegex = /[ёэыъ]/i;
+    const messageRegex = /^[\p{L}\p{N}\p{P}\p{Zs}\p{So}…“”"'\-–—()@!?%№+=*/\\[\]{}<>,.:\n\r\t]*$/u;
+
     const validate = () => {
         const newError = {};
-        const nameRegex = /^[a-zA-Zа-щА-ЩґҐєЄіІїЇ\s'-]+$/;
-        const russianLettersRegex = /[ёэыъ]/i;
-        const messageRegex = /^[\p{L}\p{N}\p{P}\p{Zs}\p{So}…“”"'\-–—()@!?%№+=*/\\[\]{}<>,.:\n\r\t]*$/u;
+
 
         if(!values.name.trim()) {
             newError.name = 'Name is required';
@@ -29,7 +40,7 @@ export default function useContactForm() {
 
         if(!values.subject.trim()) {
             newError.subject = 'Subject is required';
-        } else if(!nameRegex.test(values.subject)) {
+        } else if(!subjectRegex.test(values.subject)) {
             newError.subject = 'Only letters are allowed (UA/EN)';
         } else if(russianLettersRegex.test(values.subject)) {
             newError.subject = 'Russian letters are not allowed';
@@ -48,34 +59,66 @@ export default function useContactForm() {
         }
 
         setErrors(newError);
-        return Object.keys(newError).length === 0;
+        return newError;
     };
+
+
+    useEffect(() => {
+        const firstErrorKey = Object.keys(errors)[0];
+        if(firstErrorKey && inputRefs[firstErrorKey]?.current) {
+            inputRefs[firstErrorKey].current.focus();
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [errors]);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setValue((prev) => ({...prev, [name]: value}));
 
-        setErrors((prevErrors) => {
-            const newErrors = { ...prevErrors };
-            if(value.trim()) {
-                delete newErrors[name];
-            }
-            return newErrors;
-        });
+        let formattedValue = value
+
+        if(name === 'name') {
+            formattedValue = value
+                .split(' ')
+                .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+                .join(' ');
+        }
+
+        if(name === 'subject') {
+            formattedValue = value.charAt(0).toUpperCase() + value.slice(1);
+        }
+
+        setValues(prev => ({
+            ...prev,
+            [name]: formattedValue,
+        }));
+
     };
 
     const handleSubmit = (onSuccess) => (e) => {
         e.preventDefault();
-        if(validate()) {
-            onSuccess(values);
-            setIsSubmitted(true);
-        }
+       const newErrors = validate();
+       const hasErrors = Object.keys(newErrors).length > 0;
+
+       if(!hasErrors) {
+        onSuccess(values);
+        resetForm();
+        setIsSubmitted(true);
+       } else {
+        setValues((prevValues) => {
+            const updated ={ ...prevValues };
+            Object.keys(newErrors).forEach((key) => {
+                updated[key] = '';
+            });
+            return updated;
+        })
+       }
     };
 
     const resetForm = () => {
-        setValue({name: '', subject: '', message: ''});
+        setValues({name: '', subject: '', message: ''});
         setErrors({});
+        setIsSubmitted(false);
     }
 
-    return { values, errors, handleChange, handleSubmit, isSubmitted, resetForm};
+    return { values, errors, handleChange, handleSubmit, isSubmitted, resetForm, inputRefs};
 }

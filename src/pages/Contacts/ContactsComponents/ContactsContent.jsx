@@ -13,6 +13,7 @@ export default function ContactsContent() {
         handleChange,
         handleSubmit,
         resetForm,
+        inputRefs,
     } = useContactForm();
 
     const onFormSubmit = (FormData) => {
@@ -26,6 +27,7 @@ export default function ContactsContent() {
     
     return(
         <section  className={ContactsContentStyle['contacts-content-wrapper']}>
+            <div className={ContactsContentStyle['corner-curve']}></div>
             <h1 className={ContactsContentStyle['contacts-title']}>Contacts</h1>     
                 <div className={ContactsContentStyle['form-container']}>
                     <div className={ContactsContentStyle['form-text']}>
@@ -46,6 +48,7 @@ export default function ContactsContent() {
                             className={errors.name ? ContactsContentStyle['input-error'] : ''}
                             aria-invalid={!!errors.name}
                             aria-describedby="error-name"
+                            ref={inputRefs.name}
                         />
                         
                         <label htmlFor="subject" className={ContactsContentStyle['visually-hidden']}>Subject</label>     
@@ -59,6 +62,7 @@ export default function ContactsContent() {
                             className={errors.subject ? ContactsContentStyle['input-error'] : ''}
                             aria-invalid={!!errors.subject}
                             aria-describedby="error-subject"
+                            ref={inputRefs.subject}
                         />
                         
                         <label htmlFor="message" className={ContactsContentStyle['visually-hidden']}>Message</label>
@@ -72,6 +76,7 @@ export default function ContactsContent() {
                             className={errors.message ? ContactsContentStyle['input-error'] : ''}
                             aria-invalid={!!errors.message}
                             aria-describedby="error-message"
+                            ref={inputRefs.message}
                         /> 
                         <button type="submit">Send</button>
                     </form>

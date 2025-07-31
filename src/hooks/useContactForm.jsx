@@ -81,10 +81,37 @@ export default function useContactForm() {
                 .split(' ')
                 .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
                 .join(' ');
+
+            if(formattedValue.trim().length >= 2) {
+                setErrors(prev => {
+                    const updated = { ...prev };
+                    delete updated.name;
+                    return updated;
+
+                });
+            }
         }
 
         if(name === 'subject') {
             formattedValue = value.charAt(0).toUpperCase() + value.slice(1);
+
+            if(formattedValue.trim().length >= 3) {
+                setErrors(prev => {
+                    const updated = { ...prev };
+                    delete updated.subject;
+                    return updated;
+                });
+            }
+        }
+
+        if(name === 'message') {
+            if(value.trim().length >= 10) {
+                setErrors(prev => {
+                    const updated = { ...prev };
+                    delete updated.message;
+                    return updated;
+                });
+            }
         }
 
         setValues(prev => ({

@@ -1,0 +1,42 @@
+.projects-wrapper {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding: 40px 20px;
+    gap: 20px; 
+    -ms-overflow-style: none;  
+    scrollbar-width: none; 
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
+    .project-item {
+        flex: 0 0 150px;
+        height: 200px;
+        background-color: #444;
+        color: white;
+        border-radius: 12px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 0.5;
+        transform: scale(0.7);
+        transition: transform 0.3s ease, opacity 0.3s ease;
+        cursor: pointer;
+        position: relative;
+        z-index: 1;
+
+        .prev, .next {
+            transform: scale(0.9);
+            opacity: 0.8;
+            z-index: 5;
+        }
+    }
+    .active {
+        transform:  scale(1);
+        opacity: 1;
+        z-index: 2;
+    }
+    .project-item:nth-child(n + 1):not(.active):nth-child(-n + 10) {}
+}

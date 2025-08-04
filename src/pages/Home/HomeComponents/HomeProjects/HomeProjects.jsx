@@ -1,63 +1,40 @@
-import { useRef, useEffect, useState } from 'react';
+
+import { useState } from 'react';
 import HomeProjectsStyle from './HomeProjectsStyle.module.scss';
 
 
 export default function HomeProjects() {
-    const containerRef = useRef(null);
-    const [activeIndex, setActiveIndex] = useState(null);
+    const initial = [...Array(5)].map((_, i) => ({ id: i, pos: i }));
+    const [items, setItems] = useState(initial);
 
+    const centerPos = Math.floor(items.length / 2);
 
-    useEffect(() => {
-        const handleScroll = () => {
-            if(!containerRef.current) return;
+    const shuffle = (clickedId) => {
+      setItems((prev) => {
+        const newItems = prev.map((it) => ({...it}));
+        const heroIdx = newItems.findIndex((it) => it.pos === centerPos);
+        const targetIdx = newItems.findIndex((it) => it.id === clickedId);
 
-            const container = containerRef.current;
-            const children = container.children;
-            const containerCenter = container.scrollLeft + container.offsetWidth / 2;
-
-            let closesIndex = 0;
-            let closesDistance = Infinity;
-
-            Array.from(children).forEach((child, index) => {
-                const childCenter = child.offsetLeft + child.offsetWidth / 2;
-                const distance = Math.abs(containerCenter - childCenter);
-
-                if(distance < closesDistance) {
-                    closesDistance = distance;
-                    closesIndex = index;
-                }
-            });
-            setActiveIndex(closesIndex);
-        };
-
-        const container = containerRef.current;
-        if(container) {
-            container.addEventListener('scroll', handleScroll);
-            handleScroll();
-        }
-        return () => {
-            if(container) {
-                container.removeEventListener('scroll', handleScroll)
-            }
-        };
-    }, []);
+        [newItems[heroIdx].pos, newItems[targetIdx].pos] = [newItems[targetIdx].pos, newItems[heroIdx].pos];
+        return newItems;
+      })
+    }
 
 
     return(
-        <div className={HomeProjectsStyle['projects-wrapper']} ref={containerRef}>
-            {[...Array(10)].map((_, index) => (
-                <div
-                    key={index}
-                    className={`
-                        ${HomeProjectsStyle['project-item']}
-                        ${activeIndex === index ? HomeProjectsStyle['active'] : ''}
-                        ${activeIndex - 1 === index ? HomeProjectsStyle['prev'] : ''}
-                        ${activeIndex + 1 === index ? HomeProjectsStyle['next'] : ''}
-                    `}
-                >
-                    Project {index + 1}
-                </div>
+      <div className={HomeProjectsStyle['projects-wrapper']}> 
+          <ul className={HomeProjectsStyle.gallery}>
+            {items.map((item) => (
+              <li
+                key={item.id}
+                className={HomeProjectsStyle['project-item']}
+                data-pos={item.pos}
+                onClick={() => shuffle(item.id)}
+              >
+                Project {item.id + 1}
+              </li>
             ))}
-        </div>
-    );
+          </ul>
+      </div>
+    )
 }

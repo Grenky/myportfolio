@@ -1,11 +1,24 @@
 
 import { useState } from 'react';
 import HomeProjectsStyle from './HomeProjectsStyle.module.scss';
-
-
+import NadaverseImg from '../../../../assets/images/nadaverse.png';
+import OMWImg from '../../../../assets/images/onemoneyway.png';
 export default function HomeProjects() {
-    const initial = [...Array(5)].map((_, i) => ({ id: i, pos: i }));
-    const [items, setItems] = useState(initial);
+  
+
+  const projects = [
+    {id: 0, pos: 0, image: NadaverseImg, link: 'https://www.nadaverse.com/'},
+    {id: 1, pos: 1, image: OMWImg, link: 'https://onemoneyway.com/'},
+    { id: 2, pos: 2, image: NadaverseImg, link: 'https://www.nadaverse.com/' },
+    { id: 3, pos: 3, image: OMWImg, link: 'https://onemoneyway.com/' },
+    { id: 4, pos: 4, image: NadaverseImg, link: 'https://www.nadaverse.com/' },
+  ]
+
+
+
+    const [items, setItems] = useState(
+      projects.map((project, i) => ({...project, pos: i }))
+    );
 
     const centerPos = Math.floor(items.length / 2);
 
@@ -22,19 +35,26 @@ export default function HomeProjects() {
 
 
     return(
-      <div className={HomeProjectsStyle['projects-wrapper']}> 
+      <section className={HomeProjectsStyle['projects-wrapper']}> 
+          <h2 className={HomeProjectsStyle['projects-title']}>Last Projects</h2>
           <ul className={HomeProjectsStyle.gallery}>
             {items.map((item) => (
               <li
                 key={item.id}
                 className={HomeProjectsStyle['project-item']}
                 data-pos={item.pos}
-                onClick={() => shuffle(item.id)}
+                onClick={() => {
+                  if(item.pos === centerPos) {
+                    window.open(item.link, '_blank');
+                  } else {
+                    shuffle(item.id)
+                  }
+                }}
               >
-                Project {item.id + 1}
+                <img className={HomeProjectsStyle['gallery-img']} src={item.image} alt={`Project ${item.id + 1}`}/>
               </li>
             ))}
           </ul>
-      </div>
+      </section>
     )
 }

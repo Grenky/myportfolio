@@ -1,28 +1,48 @@
 .projects-wrapper {
     color: white;
+    margin: 0px 0px 150px 0px;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+
+    .projects-title {
+        margin-bottom: 100px;
+        font-family: "Poppins", sans-serif;
+        font-size: 38px;
+        color: #D6DFF2;
+        font-weight: 600;
+    }
 
     .gallery {
         list-style: none;
         display: grid;
         position: relative;
-        width: 200px;
+        width: 300px;
         max-width: 600px;
-        margin: 0 auto;
+        
+
 
         .project-item {
             position: relative;
             grid-area: 1 / 1;
-            width: 100%;
-            aspect-ratio: 1;
+            width: 220px;
+            aspect-ratio: 5 / 3;
             cursor: pointer;
-            background: #444;
+            background-color: #1e1e1e;
             color: #fff;
             display: grid;
             place-items: center;
-            font-size: 1.2rem;
-            box-shadow: 0 2px 7px rgba(0, 0, 0, 0.6);
-            transition: transform 0.8s, scale 0.8s;
+            font-size: 1.2rem;   
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             will-change: transform;
+            overflow: hidden;
+            border-radius: 12px;
+            padding: 0 15px;
+
+              &:hover {
+                transform: scale(1.05);
+                box-shadow: 0 8px 24px rgba(0, 0, 0, 0.9);
+            }
         }
         .project-item[data-pos='0'] {
             transform: translateX(-240%) scale(1);
@@ -43,6 +63,13 @@
         .project-item[data-pos='4'] {
             transform: translateX(240%) scale(1);
             z-index: 1;
+        }
+        .gallery-img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;  // картинка повністю вміщується
+            background-color: #1e1e1e;  // фон під картинкою, щоб не було білого пустого місця
+            display: block;
         }
     }
 }

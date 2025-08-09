@@ -3,13 +3,14 @@ import { useState } from 'react';
 import HomeProjectsStyle from './HomeProjectsStyle.module.scss';
 import NadaverseImg from '../../../../assets/images/nadaverse.png';
 import OMWImg from '../../../../assets/images/onemoneyway.png';
+import StalleggImg from '../../../../assets/images/stallegg.png';
 export default function HomeProjects() {
   
 
   const projects = [
     {id: 0, pos: 0, image: NadaverseImg, link: 'https://www.nadaverse.com/'},
     {id: 1, pos: 1, image: OMWImg, link: 'https://onemoneyway.com/'},
-    { id: 2, pos: 2, image: NadaverseImg, link: 'https://www.nadaverse.com/' },
+    { id: 2, pos: 2, image: StalleggImg, link: 'https://stallegg.de/' },
     { id: 3, pos: 3, image: OMWImg, link: 'https://onemoneyway.com/' },
     { id: 4, pos: 4, image: NadaverseImg, link: 'https://www.nadaverse.com/' },
   ]

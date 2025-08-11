@@ -11,8 +11,6 @@ export default function ArrowBtn() {
 
 
     return(
-        <div className={ArrowBtnStyle.btn} onClick={handleScrollTop}>
-            <div className={ArrowBtnStyle['corner-curve-arrrowbtn']}></div>
-        </div>
+        <div className={ArrowBtnStyle.btn} onClick={handleScrollTop}></div>
     )
 }

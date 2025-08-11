@@ -11,6 +11,7 @@
     cursor: pointer;
     right: 90px;
     bottom: 42%;
+    transition: background-color 0.5s ease;
 
     &::after {
         content: "⬆";
@@ -25,17 +26,8 @@
         transition: 0.5s;
     }
 
-    .corner-curve-arrowbtn {
-        position: absolute;
-        top: 0;
-        right: 0;
-        width: 12px;
-        height: 12px;
-        background: none;
-        border-top-right-radius: 12px;
-        border-left: 2px solid rgba(45, 89, 74, 1);
-        border-bottom: 2px solid rgba(45, 89, 74, 1);
-        pointer-events: none;
-        z-index: 1; 
+    @media (max-width: 768px) {
+        bottom: 118px;
+        right: 50px;
     }
 }

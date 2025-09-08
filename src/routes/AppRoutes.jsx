@@ -4,9 +4,12 @@ import HomePage from "../pages/Home/HomePage";
 import Resume from "../pages/Resume/Resume";
 import Contacts from "../pages/Contacts/Contacts";
 import NotFoundPage from "../pages/NotFoundPage/NotFoundPage";
+import ScrollToTop from "../utils/ScrollTop/ScrollToTop";
 
 export default function AppRoutes() {
-    return(
+    return(  
+        <>
+        <ScrollToTop />
         <Routes>
             <Route path="/" element={<MainLayout />}>
                 <Route index element={<HomePage />}/>
@@ -16,5 +19,6 @@ export default function AppRoutes() {
                 <Route path="*" element={<NotFoundPage />}/>
             </Route>
         </Routes>
+        </>
     );
 }

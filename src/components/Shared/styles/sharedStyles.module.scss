@@ -1,6 +1,8 @@
    .header-logo {
         display: flex;
         align-items: center;
+        text-decoration: none;
+        color: inherit;
 
         &-icon {
             color: var( --accent-color);

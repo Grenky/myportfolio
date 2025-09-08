@@ -1,5 +1,6 @@
 import ContactsContentStyle from './ContactsContentStyle.module.scss'
 import useContactForm from '../../../hooks/useContactForm';
+import axios from 'axios';
 import { useState } from 'react';
 
 
@@ -12,14 +13,27 @@ export default function ContactsContent() {
         errors,
         handleChange,
         handleSubmit,
-        resetForm,
         inputRefs,
+        resetForm,
     } = useContactForm();
 
-    const onFormSubmit = (FormData) => {
-        console.log('Form submitted', FormData);
-        setShowSuccessPopup(true);
-        resetForm();
+    const onFormSubmit = async (formValues) => {
+        try {
+            const res = await axios.post(
+                `${import.meta.env.VITE_API_URL}/send-email`,
+                formValues,
+                { headers: {"Content-Type": "application/json" } }
+            );
+        if(res.data.success) {
+            setShowSuccessPopup(true);
+            resetForm();
+        } else {
+            alert("Помилка при відправці листа");
+        }
+        } catch(error) {
+            console.error("Axios error:", error);
+            alert("Помилка при відправці листа")
+        }   
     };
 
 
@@ -51,18 +65,18 @@ export default function ContactsContent() {
                             ref={inputRefs.name}
                         />
                         
-                        <label htmlFor="subject" className={ContactsContentStyle['visually-hidden']}>Subject</label>     
+                        <label htmlFor="email" className={ContactsContentStyle['visually-hidden']}>Email</label>     
                         <input 
-                            id="subject"  
-                            name="subject"
+                            id="email"  
+                            name="email"
                             type="text"
-                            placeholder={errors.subject || "The reason for your message"}
-                            value={values.subject}
+                            placeholder={errors.email || "Your Email"}
+                            value={values.email}
                             onChange={handleChange}
-                            className={errors.subject ? ContactsContentStyle['input-error'] : ''}
-                            aria-invalid={!!errors.subject}
-                            aria-describedby="error-subject"
-                            ref={inputRefs.subject}
+                            className={errors.email ? ContactsContentStyle['input-error'] : ''}
+                            aria-invalid={!!errors.email}
+                            aria-describedby="error-email"
+                            ref={inputRefs.email}
                         />
                         
                         <label htmlFor="message" className={ContactsContentStyle['visually-hidden']}>Message</label>

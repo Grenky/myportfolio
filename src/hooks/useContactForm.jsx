@@ -4,7 +4,7 @@ import { useState, useRef, useEffect } from "react"
 export default function useContactForm() {
     const [values, setValues] = useState({
         name: '',
-        subject: '',
+        email: '',
         message: '',
     });
 
@@ -14,13 +14,13 @@ export default function useContactForm() {
 
     const inputRefs = {
         name: useRef(null),
-        subject: useRef(null),
+        email: useRef(null),
         message: useRef(null),
     };
 
 
     const nameRegex = /^[a-zA-Zа-щА-ЩґҐєЄіІїЇ\s'-]+$/;
-    const subjectRegex = /^[a-zA-Zа-щА-ЩґҐєЄіІїЇ0-9\s'’":\-.,!?()&]+$/;
+    const emailRegex = /^[a-zA-Zа-щА-ЩґҐєЄіІїЇ0-9\s'’":\-.,!?()&]+$/;
     const russianLettersRegex = /[ёэыъ]/i;
     const messageRegex = /^[\p{L}\p{N}\p{P}\p{Zs}\p{So}…“”"'\-–—()@!?%№+=*/\\[\]{}<>,.:\n\r\t]*$/u;
 
@@ -38,14 +38,14 @@ export default function useContactForm() {
             newError.name = 'Name must be between 2 and 50 characters';
         }
 
-        if(!values.subject.trim()) {
-            newError.subject = 'Subject is required';
-        } else if(!subjectRegex.test(values.subject)) {
-            newError.subject = 'Only letters are allowed (UA/EN)';
-        } else if(russianLettersRegex.test(values.subject)) {
-            newError.subject = 'Russian letters are not allowed';
-        } else if(values.subject.length  < 3 || values.subject.length > 100) {
-            newError.subject = 'Subject must be between 3 and 100 characters';
+        if(!values.email.trim()) {
+            newError.email = 'Subject is required';
+        } else if(!emailRegex.test(values.email)) {
+            newError.email = 'Only letters are allowed (UA/EN)';
+        } else if(russianLettersRegex.test(values.email)) {
+            newError.email = 'Russian letters are not allowed';
+        } else if(values.email.length  < 3 || values.email.length > 100) {
+            newError.email = 'Subject must be between 3 and 100 characters';
         }
 
         if(!values.message.trim()) {
@@ -92,13 +92,13 @@ export default function useContactForm() {
             }
         }
 
-        if(name === 'subject') {
+        if(name === 'email') {
             formattedValue = value.charAt(0).toUpperCase() + value.slice(1);
 
             if(formattedValue.trim().length >= 3) {
                 setErrors(prev => {
                     const updated = { ...prev };
-                    delete updated.subject;
+                    delete updated.email;
                     return updated;
                 });
             }
@@ -142,7 +142,7 @@ export default function useContactForm() {
     };
 
     const resetForm = () => {
-        setValues({name: '', subject: '', message: ''});
+        setValues({name: '', email: '', message: ''});
         setErrors({});
         setIsSubmitted(false);
     }

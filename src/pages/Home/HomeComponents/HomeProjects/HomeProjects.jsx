@@ -9,8 +9,6 @@ export default function HomeProjects() {
     { id: 0, pos: 0, image: NadaverseImg, link: 'https://www.nadaverse.com/' },
     { id: 1, pos: 1, image: OMWImg, link: 'https://onemoneyway.com/' },
     { id: 2, pos: 2, image: StalleggImg, link: 'https://stallegg.de/' },
-    { id: 3, pos: 3, image: OMWImg, link: 'https://onemoneyway.com/' },
-    { id: 4, pos: 4, image: NadaverseImg, link: 'https://www.nadaverse.com/' },
   ];
 
   const [items, setItems] = useState(
@@ -24,6 +22,8 @@ export default function HomeProjects() {
       const newItems = prev.map((it) => ({ ...it }));
       const heroIdx = newItems.findIndex((it) => it.pos === centerPos);
       const targetIdx = newItems.findIndex((it) => it.id === clickedId);
+
+      if(heroIdx ===  -1 || targetIdx === -1) return prev;
 
       [newItems[heroIdx].pos, newItems[targetIdx].pos] = [
         newItems[targetIdx].pos,

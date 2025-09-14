@@ -41,6 +41,10 @@
       overflow: hidden;
       border-radius: 12px;
 
+      border: 12px solid #333; // додана темна рамка
+  box-shadow: 0 4px 12px rgba(0,0,0,0.6); // легка тінь для об’єму
+
+
       &:hover {
         transform: scale(1.05);
         box-shadow: 0 8px 24px rgba(0, 0, 0, 0.9);
@@ -49,25 +53,22 @@
 
   
     .project-item[data-pos='0'] {
-      transform: translateX(calc(-2 * var(--offset))) scale(1);
+      transform: translateX(calc(-1 * var(--offset))) scale(1);
       z-index: 1;
+      opacity: 0.5;
     }
+
     .project-item[data-pos='1'] {
-      transform: translateX(calc(-1 * var(--offset))) scale(1.4);
-      z-index: 5;
-    }
-    .project-item[data-pos='2'] {
-      transform: translateX(0) scale(1.8);
+      transform: translateX(0) scale(1.4);
       z-index: 10;
+      opacity: 1;
     }
-    .project-item[data-pos='3'] {
-      transform: translateX(calc(1 * var(--offset))) scale(1.4);
-      z-index: 5;
-    }
-    .project-item[data-pos='4'] {
-      transform: translateX(calc(2 * var(--offset))) scale(1);
+
+    .project-item[data-pos='2'] {
+      transform: translateX(calc(1 * var(--offset))) scale(1);
       z-index: 1;
-    }
+      opacity: 0.5;
+  }
 
     .project-item[data-pos='0'],
     .project-item[data-pos='4'] {

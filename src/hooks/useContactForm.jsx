@@ -20,9 +20,31 @@ export default function useContactForm() {
 
 
     const nameRegex = /^[a-zA-Zа-щА-ЩґҐєЄіІїЇ\s'-]+$/;
-    const emailRegex = /^[a-zA-Zа-щА-ЩґҐєЄіІїЇ0-9\s'’":\-.,!?()&]+$/;
-    const russianLettersRegex = /[ёэыъ]/i;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const russianLettersRegex = /[ёэыъЁЭЫЪ]/;
     const messageRegex = /^[\p{L}\p{N}\p{P}\p{Zs}\p{So}…“”"'\-–—()@!?%№+=*/\\[\]{}<>,.:\n\r\t]*$/u;
+
+
+      const formatName = (value) => {
+        if (!value) return value;
+        return value
+        .replace(/\s+/g, ' ')
+        .split(' ')
+        .map((word) =>
+            word
+            .split(/([-ʼ'`])/)
+            .map((seg) =>
+                ['-','ʼ',"'", '`'].includes(seg)
+                ? seg
+                : seg
+                    ? seg.charAt(0).toUpperCase() + seg.slice(1).toLowerCase()
+                    : ''
+            )
+            .join('')
+        )
+        .join(' ');
+    };
+
 
     const validate = () => {
         const newError = {};
@@ -39,13 +61,11 @@ export default function useContactForm() {
         }
 
         if(!values.email.trim()) {
-            newError.email = 'Subject is required';
+            newError.email = 'Email is required';
         } else if(!emailRegex.test(values.email)) {
-            newError.email = 'Only letters are allowed (UA/EN)';
-        } else if(russianLettersRegex.test(values.email)) {
-            newError.email = 'Russian letters are not allowed';
-        } else if(values.email.length  < 3 || values.email.length > 100) {
-            newError.email = 'Subject must be between 3 and 100 characters';
+            newError.email = 'Invalid email format';
+        } else if(values.email.length  < 3 || values.email.length > 50) {
+            newError.email = 'Email must be between 3 and 50 characters';
         }
 
         if(!values.message.trim()) {
@@ -77,10 +97,7 @@ export default function useContactForm() {
         let formattedValue = value
 
         if(name === 'name') {
-            formattedValue = value
-                .split(' ')
-                .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
-                .join(' ');
+            formattedValue = formatName(value);
 
             if(formattedValue.trim().length >= 2) {
                 setErrors(prev => {
@@ -93,7 +110,7 @@ export default function useContactForm() {
         }
 
         if(name === 'email') {
-            formattedValue = value.charAt(0).toUpperCase() + value.slice(1);
+            formattedValue = value;
 
             if(formattedValue.trim().length >= 3) {
                 setErrors(prev => {

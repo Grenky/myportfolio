@@ -8,6 +8,9 @@ export default function ContactsContent() {
 
     const [showSuccessPopup, setShowSuccessPopup] = useState(false);
 
+    const API_URL = process.env.REACT_APP_API_URL;
+    console.log("API_URL from React:", process.env.REACT_APP_API_URL);
+
     const {
         values,
         errors,
@@ -20,7 +23,7 @@ export default function ContactsContent() {
     const onFormSubmit = async (formValues) => {
         try {
             const res = await axios.post(
-                `${import.meta.env.VITE_API_URL}/send-email`,
+                `${API_URL}/send-email`,
                 formValues,
                 { headers: {"Content-Type": "application/json" } }
             );

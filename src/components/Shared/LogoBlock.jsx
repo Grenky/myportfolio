@@ -6,7 +6,7 @@ export default function LogoBlock() {
     return(
         <Link to="/" className={shaderStyles['header-logo']}>
             <span className={shaderStyles['header-logo-icon']}>{"< >"}</span>
-            <span className={shaderStyles['header-logo-text']}>Dmitro.Dev</span>
+            <span className={shaderStyles['header-logo-text']}>Dmytro.Dev</span>
         </Link>
     );
 }

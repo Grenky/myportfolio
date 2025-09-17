@@ -34,7 +34,7 @@ const [showeCursor, setShowCursor] = useState(true);
             <article className={HomeConStyles.text}>
                 <p className={HomeConStyles['first-text']}>
                     <span className={HomeConStyles.tag}>&lt;span&gt; </span>
-                        Hi, I'm Dmitro
+                        Hi, I'm Dmytro
                     <span className={HomeConStyles.tag}>  &lt;span&gt;</span> 
                 </p>
                 <h1 className={HomeConStyles.title}>Junior <span className={HomeConStyles['title-tag']}>{"{ Frontend }"}</span> Web Developer</h1>

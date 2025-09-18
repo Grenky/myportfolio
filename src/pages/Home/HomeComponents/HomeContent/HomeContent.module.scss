@@ -69,7 +69,7 @@
 
       @media (max-width: 768px) {
         flex-direction: column-reverse;
-        gap: 30px;
+        gap: 3  0px;
       }
 
     .img-box {
@@ -98,9 +98,9 @@
         flex: 1;
 
         .first-text {
-            font-size: 20px;
+            font-size: clamp(18px, 2vw, 28px);
             font-family: 'Poppins', sans-serif;
-
+            white-space: nowrap;
             .tag {
                 color: #EA8F8D;
                 font-size: 20px;
@@ -108,13 +108,14 @@
             }
         }
         .title {
-            font-size: 38px;
+            font-size: clamp(24px, 4vw, 38px);
             font-family: 'Poppins', sans-serif;
-
+           
 
             .title-tag {
                 color: #027B52;
-            }
+                white-space: nowrap;
+            }   
         }
         .last-text {
             font-family: 'JetBrains Mono', monospace;

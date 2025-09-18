@@ -1,14 +1,11 @@
-            @keyframes blink {
-            0%, 50% {
-                opacity: 1;
-            }
-            51%, 100% {
-                opacity: 0;
-            }
-            
-        }
-
-
+@keyframes blink {
+    0%, 50% {
+        opacity: 1;
+    }
+    51%, 100% {
+        opacity: 0;
+    }
+}
 
 .wrapper {
     color: white;
@@ -36,13 +33,13 @@
         right: 0px;
         width: 60%;
         height: 1.5px;
-         background: linear-gradient(
+        background: linear-gradient(
             to right,
             rgba(2, 123, 82, 0) 0%,
             rgba(2, 123, 82, 0.4) 25%,
             rgba(2, 123, 82, 0.7) 50%,
             rgba(2, 123, 82, 0.7) 75%,
-            rgba(2, 123, 82, 1) 100% 
+            rgba(2, 123, 82, 1) 100%
         );
         pointer-events: none;
         border-bottom-left-radius: 12px;
@@ -65,30 +62,36 @@
         background-repeat: no-repeat;
         background-position: right bottom;
         background-size: 2px 100%;
-  }
-
-      @media (max-width: 768px) {
-        flex-direction: column-reverse;
-        gap: 3  0px;
-      }
+    }
 
     .img-box {
         flex-shrink: 0;
         max-width: 500px;
         width: 100%;  
         display: flex;
-        justify-content: center;
-        align-items: center;
+        justify-content: center; // центр по горизонталі
+        align-items: center;     // центр по вертикалі
         flex: 1;
-        
 
         .myImg {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 12px;   
+            max-width: 100%;
+            width: auto;      // для точного центру
+            height: auto;
+            border-radius: 12px;
+            display: block;   // прибирає inline offset
+        }
+
+        @media (max-width: 768px) {
+            flex: 0 0 auto;       // прибираємо розтягування
+            margin: 0 auto;       // центр по горизонталі
+            max-width: 100%;
+        }
+
+        @media (max-width: 500px) {
+            margin: 0 auto;
         }
     }
+
     .text {
         min-width: 300px;
         display: flex;
@@ -101,22 +104,30 @@
             font-size: clamp(18px, 2vw, 28px);
             font-family: 'Poppins', sans-serif;
             white-space: nowrap;
+
             .tag {
                 color: #EA8F8D;
                 font-size: 20px;
                 font-family: 'JetBrains Mono', monospace;
             }
         }
+
         .title {
             font-size: clamp(24px, 4vw, 38px);
             font-family: 'Poppins', sans-serif;
-           
 
             .title-tag {
                 color: #027B52;
                 white-space: nowrap;
-            }   
+            }
+
+            @media (max-width: 500px) {
+                font-size: clamp(20px, 6vw, 28px);
+                min-width: auto;        
+                width: 100%; 
+            }
         }
+
         .last-text {
             font-family: 'JetBrains Mono', monospace;
             font-size: 20px;
@@ -128,14 +139,71 @@
             .tag{
                 color: #EA8F8D;
             }
-              .cursor {
+
+            .cursor {
                 display: inline-block;
                 width: 5px;
                 height: 1em;
                 background-color: white;
                 margin-left: 2px;
                 animation: blink 1s steps(1) infinite;
-                }
             }
+
+            @media (max-width: 500px) {
+                font-size: clamp(14px, 4vw, 18px);
+                line-height: 1.4;
+            }
+        }
+
+        @media (max-width: 768px) {
+            min-width: auto;
+            width: 100%;
+           
+        }
+    }
+
+    @media (max-width: 900px) {
+        gap: 40px;
+        
+    }
+
+    // --- Мобільна версія з точними параметрами My Skills ---
+    @media (max-width: 768px) {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+        width: auto;
+        max-width: 100%;
+        margin: 0px 30px 70px 30px; // вертикальні відступи як у My Skills
+        padding: 40px;              // padding як у My Skills
+
+        .img-box, .text {
+            flex: 1 1 100%;
+            max-width: 100%;
+        }
+
+        .first-text {
+            white-space: normal; // переносимо текст
+        }
+
+        .title {
+            font-size: clamp(20px, 6vw, 28px);
+            width: 100%;
+        }
+
+        .last-text {
+            font-size: clamp(14px, 4vw, 18px);
+            line-height: 1.4;
+        }
+
+        .img-box .myImg {
+            margin: 0 auto; // центр картинки на мобілці
+        }
+    }
+
+    @media (max-width: 500px) {
+        padding: 20px;
+        margin: 0 15px 20px 15px;
+        gap: 15px;
     }
 }

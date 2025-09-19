@@ -12,7 +12,7 @@ export default function Footer() {
                 <LogoBlock />
                 <SocialBlock />
                 <NavBlock />
-                <p className={FooterStyles.copyright}>© {new Date().getFullYear()} Dmitro.Dev. All rights reserved.</p>
+                <p className={FooterStyles.copyright}>© {new Date().getFullYear()} Dmytro.Dev. All rights reserved.</p>
                 <ArrowBtn />
             </div>
         </footer>

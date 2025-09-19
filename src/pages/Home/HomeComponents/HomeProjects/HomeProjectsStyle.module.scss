@@ -40,9 +40,8 @@
       will-change: transform;
       overflow: hidden;
       border-radius: 12px;
-
-      border: 12px solid #333; // додана темна рамка
-  box-shadow: 0 4px 12px rgba(0,0,0,0.6); // легка тінь для об’єму
+      border: 12px solid #333; 
+      box-shadow: 0 4px 12px rgba(0,0,0,0.6); 
 
 
       &:hover {
@@ -68,7 +67,7 @@
       transform: translateX(calc(1 * var(--offset))) scale(1);
       z-index: 1;
       opacity: 0.5;
-  }
+    }
 
     .project-item[data-pos='0'],
     .project-item[data-pos='4'] {
@@ -108,6 +107,11 @@
   @media (max-width: 600px) {
     .gallery {
       grid-template-columns: 1fr;
+    }
+  }
+    @media (max-width: 785px) {
+    .gallery {
+      grid-template-columns: repeat(1, 1fr);
     }
   }
 }

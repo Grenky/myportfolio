@@ -69,21 +69,21 @@
         max-width: 500px;
         width: 100%;  
         display: flex;
-        justify-content: center; // центр по горизонталі
-        align-items: center;     // центр по вертикалі
+        justify-content: center; 
+        align-items: center;     
         flex: 1;
 
         .myImg {
             max-width: 100%;
-            width: auto;      // для точного центру
+            width: auto;      
             height: auto;
             border-radius: 12px;
-            display: block;   // прибирає inline offset
+            display: block;   
         }
 
         @media (max-width: 768px) {
-            flex: 0 0 auto;       // прибираємо розтягування
-            margin: 0 auto;       // центр по горизонталі
+            flex: 0 0 auto;      
+            margin: 0 auto;      
             max-width: 100%;
         }
 
@@ -167,15 +167,14 @@
         
     }
 
-    // --- Мобільна версія з точними параметрами My Skills ---
+    // --- mobile version ---
     @media (max-width: 768px) {
-        flex-direction: column;
         gap: 20px;
         text-align: center;
         width: auto;
         max-width: 100%;
-        margin: 0px 30px 70px 30px; // вертикальні відступи як у My Skills
-        padding: 40px;              // padding як у My Skills
+        margin: 0px 30px 70px 30px; 
+        padding: 40px;              
 
         .img-box, .text {
             flex: 1 1 100%;
@@ -183,7 +182,7 @@
         }
 
         .first-text {
-            white-space: normal; // переносимо текст
+            white-space: normal; 
         }
 
         .title {
@@ -197,7 +196,7 @@
         }
 
         .img-box .myImg {
-            margin: 0 auto; // центр картинки на мобілці
+            margin: 0 auto; 
         }
     }
 

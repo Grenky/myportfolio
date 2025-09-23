@@ -112,7 +112,9 @@ export default function HomeSkills() {
     const [selectedSkill, setSelectedSkill] = useState(null);
 
     useEffect(() =>{
-        const element = sectionRef.current;
+      const element = sectionRef.current;
+
+      const threshold = window.innerWidth < 900 ? 0.1 : 0.5;  
 
     const observer = new IntersectionObserver(
         ([entry]) => {
@@ -121,9 +123,7 @@ export default function HomeSkills() {
                 observer.unobserve(entry.target)
             }
         },
-        {
-            threshold: 0.5,
-        }
+        {threshold}    
     );
 
         if(sectionRef.current) {

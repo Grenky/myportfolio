@@ -106,7 +106,7 @@
 
             .tag {
                 color: #EA8F8D;
-                font-size: 20px;
+                font-size: 14px;
                 font-family: 'JetBrains Mono', monospace;
             }
         }
@@ -203,5 +203,11 @@
         padding: 20px;
         margin: 0 15px 20px 15px;
         gap: 15px;
+    }
+        @media (max-width: 400px) {
+        .first-text {
+            font-size: clamp(14px, 4vw, 16px); 
+            white-space: normal;
+        }
     }
 }

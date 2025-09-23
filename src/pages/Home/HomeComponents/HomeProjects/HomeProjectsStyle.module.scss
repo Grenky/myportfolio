@@ -100,6 +100,7 @@
         z-index: auto !important;
 
         width: clamp(340px, 25vw, 220px);
+
       }
     }
   }
@@ -112,6 +113,11 @@
     @media (max-width: 785px) {
     .gallery {
       grid-template-columns: repeat(1, 1fr);
+    }
+  }
+    @media (max-width: 400px) {
+    .project-item {
+      width: clamp(120px, 40vw, 180px);
     }
   }
 }

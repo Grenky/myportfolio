@@ -108,6 +108,7 @@
                 color: #EA8F8D;
                 font-size: 20px;
                 font-family: 'JetBrains Mono', monospace;
+                margin: 0 2px;
             }
         }
 
@@ -208,6 +209,12 @@
         .first-text {
             font-size: clamp(14px, 4vw, 16px); 
             white-space: normal;
+
+            .tag {
+                font-size: 14px; 
+                margin: 0 1px; 
+            }
         }
+
     }
 }

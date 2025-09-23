@@ -33,9 +33,9 @@ const [showCursor, setShowCursor] = useState(true);
             </div>
             <article className={HomeConStyles.text}>
                 <p className={HomeConStyles['first-text']}>
-                    <span className={HomeConStyles.tag}>&lt;span&gt;&nbsp; </span>
+                    <span className={HomeConStyles.tag}>&lt;span&gt;</span>
                         Hi, I'm Dmytro
-                    <span className={HomeConStyles.tag}>&nbsp;&lt;span&gt;</span> 
+                    <span className={HomeConStyles.tag}>&lt;span&gt;</span> 
                 </p>
                 <h1 className={HomeConStyles.title}>Junior <span className={HomeConStyles['title-tag']}>{"{ Frontend }"}</span> Web Developer</h1>
                 <p className={HomeConStyles['last-text']}>

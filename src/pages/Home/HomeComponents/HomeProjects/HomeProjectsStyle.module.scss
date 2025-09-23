@@ -93,6 +93,7 @@
       width: 100%;        
       max-width: 100%;    
       padding: 0px;
+
       .project-item {
         grid-area: auto;
         transform: none !important;
@@ -116,8 +117,12 @@
     }
   }
     @media (max-width: 400px) {
-    .project-item {
-      width: clamp(120px, 40vw, 180px);
-    }
+      .gallery {
+
+        .project-item {
+          width: clamp(180px, 55vw, 220px);
+        }
+      }
+
   }
 }

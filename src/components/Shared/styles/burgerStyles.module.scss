@@ -15,7 +15,10 @@
     }
     @media (min-width: 769px) {
       display: none; 
-  }
+    }
+    @media (max-width: 400px) {
+      right: 20px;
+    }
 
     .burger-button {
       background: none;

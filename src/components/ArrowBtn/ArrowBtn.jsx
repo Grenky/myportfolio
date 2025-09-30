@@ -11,6 +11,6 @@ export default function ArrowBtn() {
 
 
     return(
-        <div className={ArrowBtnStyle.btn} onClick={handleScrollTop}></div>
+        <button className={ArrowBtnStyle.btn} onClick={handleScrollTop}></button>
     )
 }

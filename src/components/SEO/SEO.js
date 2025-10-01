@@ -26,6 +26,7 @@ export default function SEO() {
   return (
     <Helmet>
       <title>{title}</title>
+      <link rel="canonical" href={`https://dmitro.dev${pathname}`} />
       <meta name="description" content={description} />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <meta charSet="UTF-8" />

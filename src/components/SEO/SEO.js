@@ -3,17 +3,17 @@ import { useLocation } from "react-router-dom";
 
 const seoData = {
   "/": {
-    title: "Dmytro | Frontend Developer",
+    title: "Dmytro - Frontend Developer",
     description: "Hi, I'm Dmytro — Junior Frontend Developer passionate about ReactJS, NodeJS, and modern web technologies.",
     image: "https://dmitro.dev/og-image.webp",
   },
   "/resume": {
-    title: "Resume | Dmytro",
+    title: "Resume - Dmytro.Dev",
     description: "Frontend developer with over 2 years of experience in software development. Proficient in JavaScript, NodeJS, and React.",
     image: "https://dmitro.dev/og-image-resume.webp",
   },
   "/contacts": {
-    title: "Contact | Dmytro",
+    title: "Contact - Dmytro.Dev",
     description: "Get in touch with Dmytro for collaborations or inquiries.",
     image: "https://dmitro.dev/og-image-contact.webp",
   },

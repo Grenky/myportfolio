@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 
 const seoData = {
   "/": {
-    title: "Dmytro - Frontend Developer",
+    title: "Dmytro.Dev - Portfolio",
     description: "Hi, I'm Dmytro — Junior Frontend Developer passionate about ReactJS, NodeJS, and modern web technologies.",
     image: "https://dmitro.dev/og-image.webp",
   },

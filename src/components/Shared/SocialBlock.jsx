@@ -13,7 +13,7 @@ export default function SocialBlock() {
                 <a href='https://t.me/demosoft1' target='_blank' rel='noopener noreferrer'>
                     <img  src={telegramIcon} alt='telegram'/>
                 </a>
-                <a href='mailto:demosoft61@gmail.com'>
+                <a href='https://mail.google.com/mail/?view=cm&fs=1&to=demosoft61@gmail.com&su=Object&body=Message' rel='noopener noreferrer' target='_blank'>
                     <img  src={gmailIcon} alt='gmail'/>
                 </a>
             </div>

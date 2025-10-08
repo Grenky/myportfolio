@@ -31,11 +31,11 @@ export default function ContactsContent() {
             setShowSuccessPopup(true);
             resetForm();
         } else {
-            alert("Помилка при відправці листа");
+            alert("Error sending email");
         }
         } catch(error) {
             console.error("Axios error:", error);
-            alert("Помилка при відправці листа")
+            alert("Error sending email")
         }   
     };
 

@@ -13,6 +13,12 @@ app.use(cors({
   methods: ["GET", "POST", "OPTIONS"],
   allowedHeaders: ["Origin", "Content-Type", "Accept"]
 }));
+
+app.options("*", cors({
+  origin: "https://www.dmitro.dev",
+  methods: ["GET", "POST", "OPTIONS"],
+  allowedHeaders: ["Origin", "Content-Type", "Accept"]
+}));
 app.use(express.json());
 
 app.post("/send-email", async (req, res) => {

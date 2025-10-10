@@ -14,7 +14,7 @@ app.use(cors({
   allowedHeaders: ["Origin", "Content-Type", "Accept"]
 }));
 
-app.options("*", cors({
+app.options(/.*/, cors({
   origin: "https://www.dmitro.dev",
   methods: ["GET", "POST", "OPTIONS"],
   allowedHeaders: ["Origin", "Content-Type", "Accept"]

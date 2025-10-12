@@ -8,6 +8,7 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+// --- CORS ---
 app.use(cors({
   origin: "https://www.dmitro.dev",
   methods: ["GET", "POST", "OPTIONS"],
@@ -19,8 +20,11 @@ app.options(/.*/, cors({
   methods: ["GET", "POST", "OPTIONS"],
   allowedHeaders: ["Origin", "Content-Type", "Accept"]
 }));
+
+// --- Middleware ---
 app.use(express.json());
 
+// --- Route for sending email ---
 app.post("/send-email", async (req, res) => {
   const { name, email, message } = req.body;
 
@@ -32,7 +36,7 @@ app.post("/send-email", async (req, res) => {
     const transporter = nodemailer.createTransport({
       host: "smtp.gmail.com",
       port: 587,
-      secure: false,
+      secure: false, // TLS (STARTTLS)
       auth: {
         user: process.env.EMAIL_USER,
         pass: process.env.EMAIL_PASS,
@@ -51,14 +55,23 @@ app.post("/send-email", async (req, res) => {
     });
 
     res.json({ success: true, message: "Лист надіслано!" });
+
   } catch (error) {
-    console.error("Nodemailer error:", error);
-    res.status(500).json({ error: "Помилка при відправці листа" });
+    console.error("❌ Nodemailer error:", error);
+
+    res.status(500).json({
+      error: error.message || "Помилка при відправці листа",
+      details: error
+    });
   }
 });
 
+// --- Root route ---
 app.get("/", (req, res) => {
   res.send("Server works! Використовуй POST /send-email для форми.");
 });
 
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+// --- Start server ---
+app.listen(PORT, "127.0.0.1", () => 
+  console.log(`✅ Server running on port ${PORT}`)
+);

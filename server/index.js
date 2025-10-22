@@ -1,7 +1,7 @@
 import express from "express";
-import nodemailer from "nodemailer";
 import cors from "cors";
 import dotenv from "dotenv";
+import { Resend } from "resend";
 
 dotenv.config();
 
@@ -21,10 +21,12 @@ app.options(/.*/, cors({
   allowedHeaders: ["Origin", "Content-Type", "Accept"]
 }));
 
-// --- Middleware ---
 app.use(express.json());
 
-// --- Route for sending email ---
+// --- Resend setup ---
+const resend = new Resend(process.env.RESEND_API_KEY);
+
+// --- Send email route ---
 app.post("/send-email", async (req, res) => {
   const { name, email, message } = req.body;
 
@@ -33,45 +35,42 @@ app.post("/send-email", async (req, res) => {
   }
 
   try {
-    const transporter = nodemailer.createTransport({
-      host: "smtp.gmail.com",
-      port: 587,
-      secure: false, // TLS (STARTTLS)
-      auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS,
-      },
-      tls: {
-        rejectUnauthorized: false,
-      },
+    await resend.emails.send({
+      from: "noreply@resend.dev",
+      to: "demosoft61@gmail.com",
+      subject: `New message from ${name}`,
+      html: `
+        <h3>New message from your website:</h3>
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Message:</strong></p>
+        <p>${message}</p>
+      `,
     });
 
-    await transporter.sendMail({
-      from: `"${name}" <${process.env.EMAIL_USER}>`,
-      replyTo: email,
-      to: process.env.EMAIL_USER,
-      subject: `Новий лист від ${name}`,
-      text: message,
-    });
-
-    res.json({ success: true, message: "Лист надіслано!" });
-
+    res.json({ success: true, message: "Email sent successfully!" });
   } catch (error) {
-    console.error("❌ Nodemailer error:", error);
-
+    console.error("Resend error:", error);
     res.status(500).json({
-      error: error.message || "Помилка при відправці листа",
-      details: error
+      error: "Failed to send email",
+      details: error.message,
     });
   }
 });
 
 // --- Root route ---
 app.get("/", (req, res) => {
-  res.send("Server works! Використовуй POST /send-email для форми.");
+  res.send("Server works! Use POST /send-email for form.");
 });
 
 // --- Start server ---
-app.listen(PORT, "127.0.0.1", () => 
+app.listen(PORT, "127.0.0.1", () =>
   console.log(`✅ Server running on port ${PORT}`)
 );
+
+
+
+
+
+
+

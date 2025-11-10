@@ -10,13 +10,11 @@ const PORT = process.env.PORT || 5000;
 
 // --- CORS ---
 app.use(cors({
-  origin: "https://www.dmitro.dev",
-  methods: ["GET", "POST", "OPTIONS"],
-  allowedHeaders: ["Origin", "Content-Type", "Accept"]
-}));
-
-app.options(/.*/, cors({
-  origin: "https://www.dmitro.dev",
+  origin: [
+    "https://www.dmitro.dev",
+    "https://dmitro.dev",
+    "http://localhost:3000"
+  ],
   methods: ["GET", "POST", "OPTIONS"],
   allowedHeaders: ["Origin", "Content-Type", "Accept"]
 }));

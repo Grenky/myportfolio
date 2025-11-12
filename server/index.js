@@ -9,12 +9,22 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 // --- CORS ---
+
+const allowedOrigins = [
+  "https://www.dmitro.dev",
+  "https://dmitro.dev",
+  "http://localhost:3000",
+  "http://127.0.0.1:3000"
+]
+
 app.use(cors({
-  origin: [
-    "https://www.dmitro.dev",
-    "https://dmitro.dev",
-    "http://localhost:3000"
-  ],
+  origin: (origin, callback) => {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("CORS not allowed for this origin"));
+    }
+  },
   methods: ["GET", "POST", "OPTIONS"],
   allowedHeaders: ["Origin", "Content-Type", "Accept"]
 }));
@@ -62,7 +72,7 @@ app.get("/", (req, res) => {
 });
 
 // --- Start server ---
-app.listen(PORT, "127.0.0.1", () =>
+app.listen(PORT, () =>
   console.log(`✅ Server running on port ${PORT}`)
 );
 

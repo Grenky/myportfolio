@@ -37,7 +37,7 @@ const [showCursor, setShowCursor] = useState(true);
                         Hi, I'm Dmytro
                     <span className={HomeConStyles.tag}>&lt;span&gt;</span> 
                 </p>
-                <h1 className={HomeConStyles.title}>Junior <span className={HomeConStyles['title-tag']}>{"{ Frontend }"}</span> Web Developer</h1>
+                <h1 className={HomeConStyles.title}>Middle <span className={HomeConStyles['title-tag']}>{"{ Frontend }"}</span> Web Developer</h1>
                 <p className={HomeConStyles['last-text']}>
                     <span  dangerouslySetInnerHTML={{ __html: displayedText }} />
                     {showCursor && <span className={HomeConStyles.cursor}></span>}
